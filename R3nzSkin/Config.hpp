@@ -15,7 +15,6 @@ public:
 	void init() noexcept;
 	void save() noexcept;
 	void load() noexcept;
-	void reset() noexcept;
 
 	KeyBind menuKey{ KeyBind(KeyBind::INSERT) };
 	KeyBind nextSkinKey{ KeyBind(KeyBind::PAGE_UP) };

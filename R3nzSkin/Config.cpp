@@ -104,25 +104,3 @@ void Config::load() noexcept
 
 	in.close();
 }
-
-void Config::reset() noexcept
-{
-	this->menuKey = KeyBind(KeyBind::INSERT);
-	this->nextSkinKey = KeyBind(KeyBind::PAGE_UP);
-	this->previousSkinKey = KeyBind(KeyBind::PAGE_DOWN);
-	this->heroName = true;
-	this->rainbowText = true;
-	this->quickSkinChange = false;
-	this->isOpen = true;
-	this->fontScale = 1.0f;
-	this->current_combo_skin_index = 0;
-	this->current_combo_ward_index = 0;
-	this->current_combo_minion_index = 0;
-	this->current_minion_skin_index = -1;
-	this->current_ward_skin_index = -1;
-	this->current_combo_order_turret_index = 0;
-	this->current_combo_chaos_turret_index = 0;
-	this->current_combo_ally_skin_index.clear();
-	this->current_combo_enemy_skin_index.clear();
-	this->current_combo_jungle_mob_skin_index.clear();
-}

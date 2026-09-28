@@ -147,40 +147,6 @@ int KeyBind::getKey() const noexcept
     return keyMap[static_cast<std::size_t>(keyCode) < keyMap.size() ? keyCode : KeyCode::NONE].code;
 }
 
-bool KeyBind::isPressed() const noexcept
-{
-    if (keyCode == KeyCode::NONE)
-        return false;
-
-    if (keyCode == KeyCode::MOUSEWHEEL_DOWN)
-        return ImGui::GetIO().MouseWheel < 0.0f;
-
-    if (keyCode == KeyCode::MOUSEWHEEL_UP)
-        return ImGui::GetIO().MouseWheel > 0.0f;
-
-    if (keyCode >= KeyCode::MOUSE1 && keyCode <= KeyCode::MOUSE5)
-        return ImGui::IsMouseClicked(keyMap[keyCode].code);
-
-    return static_cast<std::size_t>(keyCode) < keyMap.size() && ImGui::IsKeyPressed(keyMap[keyCode].code, false);
-}
-
-bool KeyBind::isDown() const noexcept
-{
-    if (keyCode == KeyCode::NONE)
-        return false;
-
-    if (keyCode == KeyCode::MOUSEWHEEL_DOWN)
-        return ImGui::GetIO().MouseWheel < 0.0f;
-
-    if (keyCode == KeyCode::MOUSEWHEEL_UP)
-        return ImGui::GetIO().MouseWheel > 0.0f;
-
-    if (keyCode >= KeyCode::MOUSE1 && keyCode <= KeyCode::MOUSE5)
-        return ImGui::IsMouseDown(keyMap[keyCode].code);
-
-    return static_cast<std::size_t>(keyCode) < keyMap.size() && ImGui::IsKeyDown(keyMap[keyCode].code);
-}
-
 bool KeyBind::setToPressedKey() noexcept
 {
     if (ImGui::IsKeyPressed(ImGui::GetIO().KeyMap[ImGuiKey_Escape])) {
@@ -213,12 +179,6 @@ bool KeyBind::setToPressedKey() noexcept
         }
     }
     return false;
-}
-
-void KeyBindToggle::handleToggle() noexcept
-{
-    if (isPressed())
-        toggledOn = !toggledOn;
 }
 
 void ImGui::textUnformattedCentered(const char* text) noexcept

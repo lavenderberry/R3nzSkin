@@ -284,18 +284,6 @@ namespace d3d_vtable {
 	decltype(dxgi_resize_buffers::m_original) dxgi_resize_buffers::m_original;
 };
 
-static void changeModelForObject(const AIBaseCommon* obj, const char* model, const std::int32_t skin) noexcept
-{
-	if (skin == -1)
-		return;
-
-	if (const auto stack{ obj->get_character_data_stack() }; stack->base_skin.skin != skin) {
-		stack->base_skin.skin = skin;
-		stack->stack.clear();
-		stack->push(model, skin);
-	}
-}
-
 static void changeSkinForObject(const AIBaseCommon* obj, const std::int32_t skin) noexcept
 {
 	if (skin == -1)
