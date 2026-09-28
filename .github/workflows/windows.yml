@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022]
-        configuration: [RiotGamesServers, ChinaServer]
+        configuration: [RiotGamesServers]
     steps:
     - uses: actions/checkout@v3.5.2
     - name: Add msbuild to PATH
