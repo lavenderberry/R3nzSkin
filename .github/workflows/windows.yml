@@ -16,3 +16,12 @@ jobs:
     - name: Build
       shell: cmd
       run: msbuild R3nzSkin/R3nzSkin.vcxproj /p:Platform=x64 /p:Configuration=${{ matrix.configuration }}
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: skin-${{ matrix.configuration }}
+        path: |
+          Release/${{ matrix.configuration }}/R3nzSkin.dll
+          R3nzSkin/Release/${{ matrix.configuration }}/R3nzSkin.dll
+        retention-days: 7
+        if-no-files-found: error
